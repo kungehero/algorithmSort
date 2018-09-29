@@ -20,7 +20,7 @@ func PostOrderSort(node *TreeNode) []interface{} {
 		v := stack.Back()
 		top := v.Value.(*TreeNode)
 		if (top.Left == nil && top.Right == nil) || (top.Right == nil && pre == top.Left) || pre == top.Right {
-			arr = append(arr, node.Val)
+			arr = append(arr, top.Val)
 			pre = top
 			stack.Remove(v)
 
