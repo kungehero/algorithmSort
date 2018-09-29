@@ -15,9 +15,3 @@ func main() {
 		fmt.Println(v)
 	}
 }
-
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
