@@ -4,8 +4,19 @@ import (
 	"container/list"
 )
 
-func SelectSort([]int) {
-
+func SelectSort(arr []int) {
+	L := len(arr)
+	for i := 1; i < L; i++ {
+		min := i
+		for j := i; j < L-1; j++ {
+			if arr[j] < arr[j-1] {
+				min = j
+			}
+		}
+		if min != i {
+			Swap(min, i, arr)
+		}
+	}
 }
 
 func PostOrderSort(node *TreeNode) []interface{} {
