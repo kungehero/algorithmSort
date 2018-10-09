@@ -6,43 +6,35 @@ import "fmt"
 //插入   二分插入（折半查找  插入排序） 希尔排序
 //选择  直接选择  堆排序
 func main() {
-	arr := []interface{}{2, 1, 3, 5, 4, 7, 6}
-	headSoft(arr, func(a, b interface{}) bool {
-		a1 := a.(int)
-		a2 := b.(int)
-		return a1 <= a2
-	})
-	fmt.Println(arr)
-
+	arr := []int{2, 1, 3, 5, 4, 7, 6}
+	Select(arr)
 	for _, v := range arr {
 		fmt.Println(v)
 	}
 }
-func headSoft(array []interface{}, cmp func(a, b interface{}) bool) {
-	len := len(array)
-	//建堆
-	for i := (len / 2) - 1; i >= 0; i-- {
-		adjustHeap(array, i, len, cmp)
-	}
 
-	//排序
-	for i := 0; i < len; i++ {
-		sz := len - i - 1
-		array[0], array[sz] = array[sz], array[0]
-		adjustHeap(array[0:sz], 0, sz, cmp)
+func insert(a []int) {
+	for i := 1; i < len(a); i++ {
+		for j := i; j > 0; j-- {
+			if a[j-1] > a[j] {
+				a[j-1], a[j] = a[j], a[j-1]
+			}
+		}
 	}
 }
 
-func adjustHeap(array []interface{}, i, len int, cmp func(a, b interface{}) bool) {
-	for ch := i<<1 + 1; ch < len; ch = i<<1 + 1 {
-		rg := i<<1 + 2
-		if rg < len && cmp(array[ch], array[rg]) {
-			ch = rg
+func Select(a []int) {
+	for i := 0; i < len(a)-1; i++ {
+		min := i
+		for j := i + 1; j < len(a); j++ {
+			if a[j] < a[min] {
+				min = j
+			}
 		}
-		if cmp(array[ch], array[i]) {
-			return
+		if min != i {
+			temp := a[i]
+			a[i] = a[min]
+			a[min] = temp
 		}
-		array[ch], array[i] = array[i], array[ch]
-		i = ch
 	}
 }
