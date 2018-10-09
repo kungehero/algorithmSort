@@ -31,3 +31,12 @@ func InOrderTraversal(node *TreeNode) []interface{} {
 	}
 	return arr
 }
+
+func bubbleSort(arr []int) {
+	L := len(arr)
+	for i := 0; i < L; i++ {
+		for j := 0; j < L-i; j++ {
+			Swap(j-1, j, arr)
+		}
+	}
+}
