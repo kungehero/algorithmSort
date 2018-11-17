@@ -20,7 +20,7 @@ type TreeNode struct {
 }
 
 func PreTraversal(node *TreeNode) []interface{} {
-	arr := make([]interface{}, 0)
+	arr := []interface{}{}
 	stack := list.New()
 	for node != nil || stack.Len() != 0 {
 		arr = append(arr, node.Val)

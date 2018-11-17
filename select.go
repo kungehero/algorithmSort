@@ -9,7 +9,7 @@ func SelectSort(arr []int) {
 	for i := 1; i < L; i++ {
 		min := i
 		for j := i; j < L-1; j++ {
-			if arr[j] < arr[j-1] {
+			if arr[j] < arr[min] {
 				min = j
 			}
 		}
@@ -40,4 +40,11 @@ func PostOrderSort(node *TreeNode) []interface{} {
 		}
 	}
 	return arr
+}
+func test() func(int) int {
+	sum := 0
+	return func(v int) int {
+		sum += v
+		return sum
+	}
 }
